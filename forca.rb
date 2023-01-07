@@ -14,8 +14,8 @@ def escolha_uma_letra
       acertos += 1
       if chute == palavra_secreta
         p "Voce acertou a palavra secreta "
+        break
       end
-      break
       p chutes
       chute = gets.strip
     else
@@ -30,12 +30,17 @@ end
 
 def saldação
   p 'Vamos jogar ? digite (S/N)'
-  resposta =  gets.strip
-  if resposta.upcase == 'N'
-    p "Obrigado até mais"
-  else
-    p "Que legal, vamos jogar"
+  resposta =  gets.strip.upcase
+  case resposta
+  when 'S'
+    p 'Que legal vamos iniciar'
     escolha_uma_letra
+  when 'N'
+    p 'Que pena !! até a proxima.'
+  else
+    p 'Opção invalida Digite S ou N'
+    saldação
+    resposta =  gets.strip.upcase
   end
 end
 saldação
